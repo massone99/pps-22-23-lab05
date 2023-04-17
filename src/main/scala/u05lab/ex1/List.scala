@@ -55,7 +55,7 @@ enum List[A]:
 
   def reverse(): List[A] = foldLeft[List[A]](Nil())((l, e) => e :: l)
 
-  def foldRight[B](z: B)(f: (A, B) => B): B = this match
+  private def foldRight[B](z: B)(f: (A, B) => B): B = this match
     case h :: t => f(h, t.foldRight(z)(f))
     case _ => z
 
